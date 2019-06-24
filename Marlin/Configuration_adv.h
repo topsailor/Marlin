@@ -922,7 +922,7 @@
    */
   #define POWER_LOSS_RECOVERY
     #if ENABLED(POWER_LOSS_RECOVERY)
-    #define POWER_LOSS_PIN       SKR_POWER_PIN // Pin to detect power loss (optional)
+    #define POWER_LOSS_PIN       P1_26 // Pin to detect power loss (optional)
     #define POWER_LOSS_STATE     HIGH // State of pin indicating power loss
     #define POWER_LOSS_PURGE_LEN   5 // (mm) Length of filament to purge on resume
     //#define POWER_LOSS_RETRACT_LEN 10 // (mm) Length of filament to retract on fail. Requires backup power.
@@ -1278,7 +1278,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-// #define MINIMUM_STEPPER_DIR_DELAY 20
+#define MINIMUM_STEPPER_DIR_DELAY 20
 
 /**
  * Minimum stepper driver pulse width (in µs)
@@ -1291,7 +1291,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-// #define MINIMUM_STEPPER_PULSE 0
+#define MINIMUM_STEPPER_PULSE 0
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
@@ -1305,7 +1305,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-// #define MAXIMUM_STEPPER_RATE 400000
+#define MAXIMUM_STEPPER_RATE 400000
 
 // @section temperature
 
@@ -1649,7 +1649,7 @@
 
   #if AXIS_IS_TMC(Z)
     #define Z_CURRENT     1400
-    #define Z_MICROSTEPS   4
+    #define Z_MICROSTEPS   16
     #define Z_RSENSE     0.075
   #endif
 
@@ -2530,7 +2530,7 @@
 /**
  * M43 - display pin status, watch pins for changes, watch endstops & toggle LED, Z servo probe test, toggle pins
  */
-// #define PINS_DEBUGGING
+#define PINS_DEBUGGING
 
 // Enable Marlin dev mode which adds some special commands
 //#define MARLIN_DEV_MODE

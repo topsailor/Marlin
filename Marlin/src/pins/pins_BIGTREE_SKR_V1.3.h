@@ -60,8 +60,9 @@
   #define FIL_RUNOUT_PIN   P1_28
 #endif
 
-#define SKR_POWER_PIN P1_26 //YMAX
-
+#ifndef POWER_LOSS_PIN
+  #define POWER_LOSS_PIN   P1_26 //YMAX
+#endif
 //
 // Steppers
 //
