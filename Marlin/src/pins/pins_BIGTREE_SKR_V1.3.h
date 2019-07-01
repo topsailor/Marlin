@@ -70,7 +70,7 @@
 #define X_DIR_PIN          P2_06
 #define X_ENABLE_PIN       P2_01
 #ifndef X_CS_PIN
-  #define X_CS_PIN         -1
+  #define X_CS_PIN        -1
 #endif
 
 #define Y_STEP_PIN         P0_19
@@ -84,7 +84,7 @@
 #define Z_DIR_PIN          P2_11
 #define Z_ENABLE_PIN       P0_21
 #ifndef Z_CS_PIN
-  #define Z_CS_PIN         P1_10
+  #define Z_CS_PIN         -1 //P1_10
 #endif
 
 #define E0_STEP_PIN        P2_13
@@ -105,9 +105,11 @@
 // Software SPI pins for TMC2130 stepper drivers
 //
 #if ENABLED(TMC_USE_SW_SPI)
-  #define TMC_SW_MOSI      P4_28
-  #define TMC_SW_MISO      P0_05
-  #define TMC_SW_SCK       P0_04
+  #ifndef TMC_SW_MOSI
+    #define TMC_SW_MOSI      P4_28
+    #define TMC_SW_MISO      P0_05
+    #define TMC_SW_SCK       P0_04
+  #endif
 #endif
 
 #if HAS_DRIVER(TMC2208) || HAS_DRIVER(TMC2209)
@@ -138,11 +140,11 @@
   #define Y_SERIAL_TX_PIN  P1_16
   #define Y_SERIAL_RX_PIN  P1_15
 
-  // #define Z_SERIAL_TX_PIN  P1_14
-  // #define Z_SERIAL_RX_PIN  P1_10
+  #define Z_SERIAL_TX_PIN  P1_14
+  #define Z_SERIAL_RX_PIN  P1_10
 
-  #define E0_SERIAL_TX_PIN P1_09
-  #define E0_SERIAL_RX_PIN P1_08
+  // #define E0_SERIAL_TX_PIN P1_09
+  // #define E0_SERIAL_RX_PIN P1_08
 
   // #define E1_SERIAL_TX_PIN P1_04
   // #define E1_SERIAL_RX_PIN P1_01

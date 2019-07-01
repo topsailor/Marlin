@@ -287,7 +287,7 @@
 // When first starting the main fan, run it at full speed for the
 // given number of milliseconds.  This gets the fan spinning reliably
 // before setting a PWM value. (Does not work with software PWM for fan on Sanguinololu)
-//#define FAN_KICKSTART_TIME 100
+#define FAN_KICKSTART_TIME 100
 
 /**
  * PWM Fan Scaling
@@ -1197,10 +1197,10 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-#define LIN_ADVANCE
+// #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.22    // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 1   // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 #endif
 
@@ -1278,7 +1278,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-#define MINIMUM_STEPPER_DIR_DELAY 20
+#define MINIMUM_STEPPER_DIR_DELAY 200
 
 /**
  * Minimum stepper driver pulse width (in µs)
@@ -1291,7 +1291,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-#define MINIMUM_STEPPER_PULSE 0
+#define MINIMUM_STEPPER_PULSE 1
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
@@ -1621,7 +1621,7 @@
  */
 #if HAS_TRINAMIC
 
-  #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
+  #define HOLD_MULTIPLIER    0.3  // Scales down the holding current from run current
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
@@ -1649,9 +1649,9 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     1400
-    #define Z_MICROSTEPS   16
-    #define Z_RSENSE     0.075
+    #define Z_CURRENT     700
+    #define Z_MICROSTEPS   4
+    #define Z_RSENSE     0.11
   #endif
 
   #if AXIS_IS_TMC(Z2)
@@ -1667,7 +1667,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT    750
+    #define E0_CURRENT    700
     #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
   #endif
@@ -1708,7 +1708,7 @@
    */
   #define X_CS_PIN          -1
   #define Y_CS_PIN          -1
-  #define Z_CS_PIN          P1_10 //P1_10
+  #define Z_CS_PIN          -1 //P1_10
   #define X2_CS_PIN         -1
   #define Y2_CS_PIN         -1
   #define Z2_CS_PIN         -1
@@ -1725,10 +1725,10 @@
    * The default SW SPI pins are defined the respective pins files,
    * but you can override or define them here.
    */
-  #define TMC_USE_SW_SPI
-  #define TMC_SW_MOSI       P4_28 //P4_28
-  #define TMC_SW_MISO       P0_05 //P0_05
-  #define TMC_SW_SCK        P0_04 // P0_04
+  // #define TMC_USE_SW_SPI
+  // #define TMC_SW_MOSI       P4_28 //P4_28
+  // #define TMC_SW_MISO       P0_05 //P0_05
+  // #define TMC_SW_SCK        P0_04 // P0_04
 
   /**
    * Four TMC2209 drivers can use the same HW/SW serial port with hardware configured addresses.
@@ -1841,7 +1841,7 @@
    * It is advised to set X/Y/Z_HOME_BUMP_MM to 0.
    * M914 X/Y/Z to live tune the setting
    */
-  //#define SENSORLESS_HOMING // StallGuard capable drivers only
+  // #define SENSORLESS_HOMING // StallGuard capable drivers only
 
   /**
    * Use StallGuard2 to probe the bed with the nozzle.
@@ -1854,7 +1854,7 @@
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
     #define X_STALL_SENSITIVITY  8
-    #define Y_STALL_SENSITIVITY  8
+    // #define Y_STALL_SENSITIVITY  8
     //#define Z_STALL_SENSITIVITY  8
   #endif
 
