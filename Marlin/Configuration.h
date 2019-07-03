@@ -924,7 +924,7 @@
 #define Z_PROBE_OFFSET_FROM_EXTRUDER -1.32   // Z offset: -below +above  [the nozzle]
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 25
+#define MIN_PROBE_EDGE 20
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 8000
@@ -1056,10 +1056,10 @@
 #define Y_BED_SIZE 300
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define X_MIN_POS -5
+#define Y_MIN_POS -10
 #define Z_MIN_POS 0
-#define X_MAX_POS 310
+#define X_MAX_POS 315
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 500
 
