@@ -124,7 +124,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 250000
+#define BAUDRATE 1000000
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
@@ -663,7 +663,7 @@
 #define Y2_DRIVER_TYPE TMC2208
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE TMC2208
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -713,7 +713,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 200, 200, 640, 400 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 200, 200, 1280, 400 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -751,9 +751,9 @@
  *   https://reprap.org/forum/read.php?1,739819
  *   http://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
-//#define JUNCTION_DEVIATION
+#define JUNCTION_DEVIATION
 #if ENABLED(JUNCTION_DEVIATION)
-  #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.075  // (mm) Distance from real junction edge
 #endif
 
 /**
@@ -765,12 +765,12 @@
  * value set here, it may happen instantaneously.
  */
 #if DISABLED(JUNCTION_DEVIATION)
-  #define DEFAULT_XJERK 10.0
-  #define DEFAULT_YJERK 10.0
+  #define DEFAULT_XJERK 6.0
+  #define DEFAULT_YJERK 6.0
   #define DEFAULT_ZJERK  0.3
 #endif
 
-#define DEFAULT_EJERK    5.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    5.0  // Used by Linear Advance
 
 /**
  * S-Curve Acceleration
@@ -921,7 +921,7 @@
  */
 #define X_PROBE_OFFSET_FROM_EXTRUDER -34 // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 5  // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -3.08   // Z offset: -below +above  [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.32   // Z offset: -below +above  [the nozzle]
 
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 25
@@ -1027,7 +1027,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false // ADO MOTOR, flip otherwise
+#define INVERT_E0_DIR true // ADO MOTOR, flip otherwise
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1196,7 +1196,7 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  #define G26_MESH_VALIDATION
+  // #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.6  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.3  // (mm) Default layer height for the G26 Mesh Validation Tool.
@@ -1456,8 +1456,8 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 180
-#define PREHEAT_1_TEMP_BED     50
+#define PREHEAT_1_TEMP_HOTEND 190
+#define PREHEAT_1_TEMP_BED     56
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
@@ -1737,7 +1737,7 @@
 //
 // Note: Usually sold with a white PCB.
 //
-#define REPRAP_DISCOUNT_SMART_CONTROLLER
+// #define REPRAP_DISCOUNT_SMART_CONTROLLER
 
 //
 // Original RADDS LCD Display+Encoder+SDCardReader
@@ -1877,7 +1877,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-// #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // ReprapWorld Graphical LCD

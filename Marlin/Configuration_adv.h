@@ -650,7 +650,7 @@
 // @section lcd
 
 #if EITHER(ULTIPANEL, EXTENSIBLE_UI)
-  #define MANUAL_FEEDRATE { 50*60, 50*60, 4*60, 60 } // Feedrates for manual moves along X, Y, Z, E from panel
+  #define MANUAL_FEEDRATE { 50*60, 50*60, 6*60, 60 } // Feedrates for manual moves along X, Y, Z, E from panel
   #if ENABLED(ULTIPANEL)
     #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
     #define ULTIPANEL_FEEDMULTIPLY  // Encoder sets the feedrate multiplier on the Status Screen
@@ -923,7 +923,7 @@
    * an option on the LCD screen to continue the print from the last-known
    * point in the file.
    */
-  #define POWER_LOSS_RECOVERY
+  // #define POWER_LOSS_RECOVERY
     #if ENABLED(POWER_LOSS_RECOVERY)
     #define POWER_LOSS_PIN       P1_26 // Pin to detect power loss (optional)
     #define POWER_LOSS_STATE     HIGH // State of pin indicating power loss
@@ -1072,7 +1072,7 @@
  */
 #if HAS_GRAPHICAL_LCD
   // Show SD percentage next to the progress bar
-  //#define DOGM_SD_PERCENT
+  #define DOGM_SD_PERCENT
 
   // Enable to save many cycles by drawing a hollow frame on the Info Screen
   #define XYZ_HOLLOW_FRAME
@@ -1124,7 +1124,7 @@
   #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM)
   #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
   #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
-  //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
+  // #define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
   //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
@@ -1208,10 +1208,10 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-// #define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 1   // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0.06   // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 #endif
 
@@ -1274,7 +1274,7 @@
 #endif
 
 // Moves (or segments) with fewer steps than this will be joined with the next move
-#define MIN_STEPS_PER_SEGMENT 3
+#define MIN_STEPS_PER_SEGMENT 1
 
 /**
  * Minimum delay after setting the stepper DIR (in ns)
@@ -1289,7 +1289,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-#define MINIMUM_STEPPER_DIR_DELAY 200
+#define MINIMUM_STEPPER_DIR_DELAY 20
 
 /**
  * Minimum stepper driver pulse width (in µs)
@@ -1419,20 +1419,20 @@
  * Note that M207 / M208 / M209 settings are saved to EEPROM.
  *
  */
-//#define FWRETRACT
+#define FWRETRACT
 #if ENABLED(FWRETRACT)
   #define FWRETRACT_AUTORETRACT           // costs ~500 bytes of PROGMEM
   #if ENABLED(FWRETRACT_AUTORETRACT)
-    #define MIN_AUTORETRACT 0.1           // When auto-retract is on, convert E moves of this length and over
+    #define MIN_AUTORETRACT 0.2           // When auto-retract is on, convert E moves of this length and over
     #define MAX_AUTORETRACT 10.0          // Upper limit for auto-retract conversion
   #endif
   #define RETRACT_LENGTH 3                // Default retract length (positive mm)
   #define RETRACT_LENGTH_SWAP 13          // Default swap retract length (positive mm), for extruder change
-  #define RETRACT_FEEDRATE 45             // Default feedrate for retracting (mm/s)
-  #define RETRACT_ZRAISE 0                // Default retract Z-raise (mm)
-  #define RETRACT_RECOVER_LENGTH 0        // Default additional recover length (mm, added to retract length when recovering)
+  #define RETRACT_FEEDRATE 65             // Default feedrate for retracting (mm/s)
+  #define RETRACT_ZRAISE 0.8                // Default retract Z-raise (mm)
+  #define RETRACT_RECOVER_LENGTH -0.05        // Default additional recover length (mm, added to retract length when recovering)
   #define RETRACT_RECOVER_LENGTH_SWAP 0   // Default additional swap recover length (mm, added to retract length when recovering from extruder change)
-  #define RETRACT_RECOVER_FEEDRATE 8      // Default feedrate for recovering from retraction (mm/s)
+  #define RETRACT_RECOVER_FEEDRATE 65      // Default feedrate for recovering from retraction (mm/s)
   #define RETRACT_RECOVER_FEEDRATE_SWAP 8 // Default feedrate for recovering from swap retraction (mm/s)
   #if ENABLED(MIXING_EXTRUDER)
     //#define RETRACT_SYNC_MIXING         // Retract and restore all mixing steppers simultaneously
@@ -1636,7 +1636,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT     700  // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT     750  // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_MICROSTEPS   32  // 0..256
     #define X_RSENSE     0.11
   #endif
@@ -1648,20 +1648,20 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT     700
+    #define Y_CURRENT     750
     #define Y_MICROSTEPS   32
     #define Y_RSENSE     0.11
   #endif
 
   #if AXIS_IS_TMC(Y2)
-    #define Y2_CURRENT    700
+    #define Y2_CURRENT    750
     #define Y2_MICROSTEPS  32
     #define Y2_RSENSE    0.11
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     700
-    #define Z_MICROSTEPS   4
+    #define Z_CURRENT     750
+    #define Z_MICROSTEPS   8
     #define Z_RSENSE     0.11
   #endif
 
@@ -1678,7 +1678,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT    700
+    #define E0_CURRENT    750
     #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
   #endif
