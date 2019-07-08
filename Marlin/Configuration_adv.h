@@ -545,7 +545,7 @@
 
   // Safety: The probe needs time to recognize the command.
   //         Minimum command delay (ms). Enable and increase if needed.
-  //#define BLTOUCH_DELAY 500
+  #define BLTOUCH_DELAY 500
 
   /**
    * Settings for BLTOUCH Classic 1.2, 1.3 or BLTouch Smart 1.0, 2.0, 2.2, 3.0, 3.1, and most clones:
@@ -1210,8 +1210,8 @@
  */
 #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
-  //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.02   // Unit: mm compression per 1mm/s extruder speed
+  #define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
+  #define LIN_ADVANCE_K 0   // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 #endif
 
@@ -1632,7 +1632,7 @@
  */
 #if HAS_TRINAMIC
 
-  #define HOLD_MULTIPLIER    0.3  // Scales down the holding current from run current
+  #define HOLD_MULTIPLIER    0.4  // Scales down the holding current from run current
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
@@ -1660,8 +1660,8 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     750
-    #define Z_MICROSTEPS   8
+    #define Z_CURRENT     800
+    #define Z_MICROSTEPS   16
     #define Z_RSENSE     0.11
   #endif
 
