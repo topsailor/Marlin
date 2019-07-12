@@ -469,9 +469,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Ultimaker
-  #define DEFAULT_Kp 80
-  #define DEFAULT_Ki 0.2
-  #define DEFAULT_Kd 114
+  #define DEFAULT_Kp 20
+  #define DEFAULT_Ki 2
+  #define DEFAULT_Kd 90
 
   // MakerGear
   //#define DEFAULT_Kp 7.0
@@ -736,9 +736,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          2000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  5000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   2000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Junction Deviation
@@ -763,12 +763,12 @@
  * value set here, it may happen instantaneously.
  */
 #if DISABLED(JUNCTION_DEVIATION)
-  #define DEFAULT_XJERK 6.0
-  #define DEFAULT_YJERK 6.0
+  #define DEFAULT_XJERK 8.0
+  #define DEFAULT_YJERK 8.0
   #define DEFAULT_ZJERK  0.3
 #endif
 
-#define DEFAULT_EJERK    5.0  // Used by Linear Advance
+#define DEFAULT_EJERK    1.5  // Used by Linear Advance
 
 /**
  * S-Curve Acceleration
@@ -1055,7 +1055,7 @@
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS -15
+#define Y_MIN_POS -15WW
 #define Z_MIN_POS 0
 #define X_MAX_POS 325
 #define Y_MAX_POS Y_BED_SIZE
@@ -1189,7 +1189,7 @@
   // split up moves into short segments like a Delta. This follows the
   // contours of the bed more closely than edge-to-edge straight moves.
   #define SEGMENT_LEVELED_MOVES
-  #define LEVELED_SEGMENT_LENGTH 5.0 // (mm) Length of all segments (except the last one)
+  #define LEVELED_SEGMENT_LENGTH 3.0 // (mm) Length of all segments (except the last one)
 
   /**
    * Enable the G26 Mesh Validation Pattern tool.
