@@ -518,7 +518,7 @@
 #define Y_HOME_BUMP_MM 2
 #define Z_HOME_BUMP_MM 2
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
-#define QUICK_HOME                     // If homing includes X and Y, do a diagonal move initially
+// #define QUICK_HOME                     // If homing includes X and Y, do a diagonal move initially
 //#define HOMING_BACKOFF_MM { 2, 2, 2 }  // (mm) Move away from the endstops after homing
 
 // When G28 is called, this option will make Y home before X
@@ -1660,7 +1660,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     1000
+    #define Z_CURRENT     850
     #define Z_MICROSTEPS   16
     #define Z_RSENSE     0.11
   #endif
@@ -1719,7 +1719,7 @@
    */
   #define X_CS_PIN          -1
   #define Y_CS_PIN          -1
-  #define Z_CS_PIN          P1_10
+  #define Z_CS_PIN          -1 // P1_10
   #define X2_CS_PIN         -1
   #define Y2_CS_PIN         -1
   #define Z2_CS_PIN         -1
@@ -1737,9 +1737,9 @@
    * but you can override or define them here.
    */
   #define TMC_USE_SW_SPI
-  #define TMC_SW_MOSI       P4_28 //P4_28
-  #define TMC_SW_MISO       P0_05 //P0_05
-  #define TMC_SW_SCK        P0_04 // P0_04
+  #define TMC_SW_MOSI   -1 //    P4_28 //P4_28
+  #define TMC_SW_MISO   -1 //    P0_05 //P0_05
+  #define TMC_SW_SCK    -1 //     P0_04 // P0_04
 
   /**
    * Four TMC2209 drivers can use the same HW/SW serial port with hardware configured addresses.
@@ -1778,7 +1778,7 @@
    * When disabled, Marlin will use spreadCycle stepping mode.
    */
   #define STEALTHCHOP_XY
-  // #define STEALTHCHOP_Z
+  #define STEALTHCHOP_Z
   // #define STEALTHCHOP_E
 
   /**
@@ -1829,7 +1829,7 @@
   #define X2_HYBRID_THRESHOLD    240
   #define Y_HYBRID_THRESHOLD     240
   #define Y2_HYBRID_THRESHOLD    240
-  #define Z_HYBRID_THRESHOLD       4
+  #define Z_HYBRID_THRESHOLD       20
   #define Z2_HYBRID_THRESHOLD      4
   #define Z3_HYBRID_THRESHOLD      4
   #define E0_HYBRID_THRESHOLD     10
