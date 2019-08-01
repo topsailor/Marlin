@@ -2059,7 +2059,7 @@
  * TWI/I2C BUS
  *
  * This feature is an EXPERIMENTAL feature so it shall not be used on production
- * machines. Enabling this will allow you to send and receive I2C data from slave
+ * machines. Enabling this will allow you to send and receive I2C data  slave
  * devices on the bus.
  *
  * ; Example #1
