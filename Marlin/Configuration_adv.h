@@ -1215,7 +1215,7 @@
  */
 #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
-  #define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
+  // #define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
   #define LIN_ADVANCE_K 0   // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 #endif
@@ -1840,7 +1840,7 @@
   #define X2_HYBRID_THRESHOLD    240
   #define Y_HYBRID_THRESHOLD     240
   #define Y2_HYBRID_THRESHOLD    240
-  #define Z_HYBRID_THRESHOLD       20
+  #define Z_HYBRID_THRESHOLD       25
   #define Z2_HYBRID_THRESHOLD      4
   #define Z3_HYBRID_THRESHOLD      4
   #define E0_HYBRID_THRESHOLD     10
